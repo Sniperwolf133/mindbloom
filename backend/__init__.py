@@ -1,0 +1,2 @@
+"""MindMate backend package."""
+
