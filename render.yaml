@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: mindbloom-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: GROQ_REASONING_EFFORT
+        value: medium
+      - key: GROQ_MAX_TOKENS
+        value: "2048"
+      - key: APP_SECRET_KEY
+        generateValue: true
+      - key: ADMIN_ACCESS_CODE
+        value: mindmate-admin
+      - key: CORS_ORIGINS
+        sync: false
